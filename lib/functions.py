@@ -93,11 +93,11 @@ def fetch_max_salary_ukraine():
     cursor.close()
 
 
-# 7. Знайти найсаршого працівника по країні
+# 7. Знайти найстаршого працівника по країні
 def fetch_max_age_by_country(country):
     cursor = connection.cursor()
-    query = f"SELECT * FROM employee WHERE age = (SELECT MAX(age) FROM employee WHERE country = '{
-        country}')"
+    query = f"SELECT * FROM employee WHERE YEAR(dateOfBirth) = (SELECT MIN(YEAR(dateOfBirth)) FROM employee WHERE country = '{
+        country}') and country = '{country}'"
     cursor.execute(query)
 
     rows = cursor.fetchall()
@@ -108,7 +108,8 @@ def fetch_max_age_by_country(country):
 # 8. Знайти AVG вік по країні
 def fetch_avg_age_by_country(country):
     cursor = connection.cursor()
-    query = f"SELECT AVG(age) FROM employee WHERE country = '{country}'"
+    query = f"SELECT AVG(DATEDIFF(year, dateOfBirth, GETDATE())) FROM employee WHERE country = '{
+        country}'"
     cursor.execute(query)
 
     rows = cursor.fetchall()
