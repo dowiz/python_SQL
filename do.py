@@ -22,9 +22,9 @@ elif choice == 7:   # Знайти найстаршого працівника �
 elif choice == 8:   # Знайти AVG вік по країні
     country = input("Enter country: ")
     fetch_avg_age_by_country(country)
-elif choice == 9:
+elif choice == 9:   # Додати працівника
     add_employee()
-elif choice == 10:
+elif choice == 10:  # Видалити працівника
     delete_employee()
 else:
     print("Error...")

@@ -120,7 +120,7 @@ def fetch_avg_age_by_country(country):
     cursor.close()
 
 
-# 9. Додати працівника в базу даних ()
+# 9. Додати працівника
 def add_employee():
 
     cursor = connection.cursor()
@@ -180,6 +180,7 @@ def get_column_data_types():
     return column_data_types
 
 
+# 10. Видалити працівника
 def delete_employee():
     cursor = connection.cursor()
     employee_id = input("Enter employeeID: ")
